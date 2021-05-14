@@ -50,4 +50,14 @@ public class UserHelper extends HelperBase {
   public void submitUserModification() {
     click(By.name("update"));
   }
+
+  public boolean isThereAUser() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void createUser(UserData user, boolean b) {
+    fillUserForm(user, b);
+    submitUserCreation();
+    returnHomePage();
+  }
 }
