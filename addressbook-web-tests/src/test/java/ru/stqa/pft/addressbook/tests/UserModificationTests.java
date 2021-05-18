@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserModificationTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testUserModification() {
     if (!app.getUserHelper().isThereAUser()) {
       app.getNavigationHelper().gotoUserPage();

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserCreationTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testUserCreation() {
     List<UserData> before = app.getUserHelper().getUserList();
     app.getNavigationHelper().gotoUserPage();

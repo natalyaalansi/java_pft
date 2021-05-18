@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UserDeletionTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testUserDeletion() {
     if (!app.getUserHelper().isThereAUser()) {
       app.getNavigationHelper().gotoUserPage();
