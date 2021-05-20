@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.UserData;
+import ru.stqa.pft.addressbook.model.Users;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserHelper extends HelperBase {
@@ -16,7 +16,7 @@ public class UserHelper extends HelperBase {
     super(wd);
   }
 
-  public void returnHomePage() {
+  public void returnToHomePage() {
     click(By.linkText("home page"));
   }
 
@@ -38,8 +38,8 @@ public class UserHelper extends HelperBase {
     }
   }
 
-  public void selectUser(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectUserById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void deleteSelectedUsers() {
@@ -48,8 +48,8 @@ public class UserHelper extends HelperBase {
     wd.findElement(By.cssSelector("div.msgbox"));
   }
 
-  public void initUserModification(int index) {
-    wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+  private void initUserModificationById(int id) {
+    wd.findElement(By.xpath("//a[contains(@href, 'edit.php?id=" + id + "')]")).click();
   }
 
   public void submitUserModification() {
@@ -60,27 +60,39 @@ public class UserHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void createUser(UserData user, boolean b) {
+  public void create(UserData user, boolean b) {
     fillUserForm(user, b);
     submitUserCreation();
-    returnHomePage();
+    returnToHomePage();
+  }
+
+  public void modify(UserData user) {
+    initUserModificationById(user.getId());
+    fillUserForm(user, false);
+    submitUserModification();
+    returnToHomePage();
+  }
+
+  public void delete(UserData user) {
+    selectUserById(user.getId());
+    deleteSelectedUsers();
   }
 
   public int getUserCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<UserData> getUserList() {
-    List<UserData> users = new ArrayList<UserData>();
+  public Users all() {
+    Users users = new Users();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String firstname = cells.get(2).getText();
       String lastname = cells.get(1).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      UserData user = new UserData(id, firstname, lastname, null, null, null, null);
-      users.add(user);
+      users.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return users;
   }
+
 }
