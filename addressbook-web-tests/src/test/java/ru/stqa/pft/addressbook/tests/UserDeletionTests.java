@@ -8,16 +8,16 @@ import java.util.List;
 
 public class UserDeletionTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test
   public void testUserDeletion() {
     if (!app.getUserHelper().isThereAUser()) {
-      app.getNavigationHelper().gotoUserPage();
+      app.goTo().gotoUserPage();
       app.getUserHelper().createUser(new UserData("nata", "ansi", "kush", "spb", "gg@gg.gg", "test1"), true);
     }
     List<UserData> before = app.getUserHelper().getUserList();
     app.getUserHelper().selectUser(before.size() - 1);
     app.getUserHelper().deleteSelectedUsers();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<UserData> after = app.getUserHelper().getUserList();
     Assert.assertEquals(after.size(), before.size() - 1);
 

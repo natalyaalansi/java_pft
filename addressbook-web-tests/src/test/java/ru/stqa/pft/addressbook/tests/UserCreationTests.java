@@ -9,10 +9,10 @@ import java.util.List;
 
 public class UserCreationTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test
   public void testUserCreation() {
     List<UserData> before = app.getUserHelper().getUserList();
-    app.getNavigationHelper().gotoUserPage();
+    app.goTo().gotoUserPage();
     UserData user = new UserData("nata2", "ansi3", "kush", "spb", "gg@gg.gg", "test1");
     app.getUserHelper().fillUserForm(user, true);
     app.getUserHelper().submitUserCreation();

@@ -9,10 +9,10 @@ import java.util.List;
 
 public class UserModificationTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test
   public void testUserModification() {
     if (!app.getUserHelper().isThereAUser()) {
-      app.getNavigationHelper().gotoUserPage();
+      app.goTo().gotoUserPage();
       app.getUserHelper().createUser(new UserData("nata", "ansi", "kush", "spb", "gg@gg.gg", "test1"), true);
     }
     List<UserData> before = app.getUserHelper().getUserList();
