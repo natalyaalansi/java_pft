@@ -15,7 +15,7 @@ public class UserDeletionTests extends TestBase {
   public void ensurePreconditions() {
     if (app.user().all().size() == 0) {
       app.goTo().userPage();
-      app.user().create(new UserData().withFirstname("petr").withLastname("petrov").withAddress("spb").withHome("lenina").withEmail("gg@gg.gg").withGroup("test1"), true);
+      app.user().create(new UserData().withFirstname("petr").withLastname("petrov").withAddress("spb").withHomePhone("lenina").withEmail("gg@gg.gg").withGroup("test1"), true);
     }
   }
 
@@ -25,8 +25,8 @@ public class UserDeletionTests extends TestBase {
     UserData deletedUser = before.iterator().next();
     app.user().delete(deletedUser);
     app.goTo().homePage();
+    assertThat(app.user().count(), equalTo(before.size() - 1));
     Users after = app.user().all();
-    assertEquals(after.size(), before.size() - 1);
     assertThat(after, equalTo(before.without(deletedUser)));
   }
 }

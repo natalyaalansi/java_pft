@@ -7,7 +7,6 @@ import ru.stqa.pft.addressbook.model.Users;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class UserModificationTests extends TestBase {
 
@@ -15,7 +14,7 @@ public class UserModificationTests extends TestBase {
   public void ensurePreconditions() {
     if (app.user().all().size() == 0) {
       app.goTo().userPage();
-      app.user().create(new UserData().withFirstname("petr").withLastname("petrov").withAddress("spb").withHome("lenina").withEmail("gg@gg.gg").withGroup("test1"), true);
+      app.user().create(new UserData().withFirstname("petr").withLastname("petrov").withAddress("spb").withHomePhone("lenina").withEmail("gg@gg.gg").withGroup("test1"), true);
     }
   }
 
@@ -25,10 +24,10 @@ public class UserModificationTests extends TestBase {
     UserData modifiedUser = before.iterator().next();
     UserData user = new UserData()
             .withId(modifiedUser.getId()).withFirstname("ivan").withLastname("ivanov")
-            .withAddress("msk").withHome("trud").withEmail("yy@gg.gg").withGroup(null);
+            .withAddress("msk").withHomePhone("trud").withEmail("yy@gg.gg").withGroup(null);
     app.user().modify(user);
+    assertThat(app.user().count(), equalTo(before.size()));
     Users after = app.user().all();
-    assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedUser).withAdded(user)));
   }
 }
