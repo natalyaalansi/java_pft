@@ -63,6 +63,7 @@ public class UserHelper extends HelperBase {
   public void create(UserData user, boolean b) {
     fillUserForm(user, b);
     submitUserCreation();
+    userCache = null;
     returnToHomePage();
   }
 
@@ -70,29 +71,37 @@ public class UserHelper extends HelperBase {
     initUserModificationById(user.getId());
     fillUserForm(user, false);
     submitUserModification();
+    userCache = null;
     returnToHomePage();
   }
 
   public void delete(UserData user) {
     selectUserById(user.getId());
     deleteSelectedUsers();
+    userCache = null;
   }
 
   public int getUserCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
+  private Users userCache = null;
+
+
   public Users all() {
-    Users users = new Users();
+    if (userCache != null) {
+      return new Users(userCache);
+    }
+    userCache = new Users();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String firstname = cells.get(2).getText();
       String lastname = cells.get(1).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      users.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname));
+      userCache.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
-    return users;
+    return new Users(userCache);
   }
 
 }
