@@ -20,10 +20,11 @@ public class UserData {
   private String homePhone;
   @Expose
   private String email;
+  @Expose
+  private String group;
   private String email2;
   private String email3;
   private String allEmails;
-  private String group;
   private String workPhone;
   private String mobilePhone;
   private String allPhones;

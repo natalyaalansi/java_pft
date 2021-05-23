@@ -56,7 +56,7 @@ public class UserDataGenerator {
     for (int i = 0; i < count; i++) {
       users.add(new UserData().withFirstname(String.format("test %s", i)).withLastname(String.format("testov %s", i))
               .withAddress(String.format("spb, lenina %s", i)).withHomePhone(String.format("+7931968000%s", i))
-              .withEmail(String.format("olala@ola.ru%s", i)));
+              .withEmail(String.format("olala@ola.ru%s", i)).withGroup(String.format("test1")));
     }
     return users;
   }
@@ -82,7 +82,7 @@ public class UserDataGenerator {
     System.out.println(new File(".").getAbsolutePath());
     Writer writer = new FileWriter(file);
     for (UserData user : users) {
-      writer.write(String.format("%s;%s;%s\n", user.getFirstname(), user.getLastname(), user.getAddress(), user.getHomePhone(), user.getEmail()));
+      writer.write(String.format("%s;%s;%s\n", user.getFirstname(), user.getLastname(), user.getAddress(), user.getHomePhone(), user.getEmail(), user.getGroup()));
     }
     writer.close();
   }
