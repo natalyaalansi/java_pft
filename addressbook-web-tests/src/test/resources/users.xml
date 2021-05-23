@@ -1,0 +1,37 @@
+<list>
+  <user>
+    <firstname>test 0</firstname>
+    <lastname>testov 0</lastname>
+    <address>spb, lenina 0</address>
+    <homePhone>+79319680000</homePhone>
+    <email>olala@ola.ru0</email>
+  </user>
+  <user>
+    <firstname>test 1</firstname>
+    <lastname>testov 1</lastname>
+    <address>spb, lenina 1</address>
+    <homePhone>+79319680001</homePhone>
+    <email>olala@ola.ru1</email>
+  </user>
+  <user>
+    <firstname>test 2</firstname>
+    <lastname>testov 2</lastname>
+    <address>spb, lenina 2</address>
+    <homePhone>+79319680002</homePhone>
+    <email>olala@ola.ru2</email>
+  </user>
+  <user>
+    <firstname>test 3</firstname>
+    <lastname>testov 3</lastname>
+    <address>spb, lenina 3</address>
+    <homePhone>+79319680003</homePhone>
+    <email>olala@ola.ru3</email>
+  </user>
+  <user>
+    <firstname>test 4</firstname>
+    <lastname>testov 4</lastname>
+    <address>spb, lenina 4</address>
+    <homePhone>+79319680004</homePhone>
+    <email>olala@ola.ru4</email>
+  </user>
+</list>
