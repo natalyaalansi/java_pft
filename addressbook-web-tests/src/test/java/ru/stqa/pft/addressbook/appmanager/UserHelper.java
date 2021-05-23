@@ -27,6 +27,7 @@ public class UserHelper extends HelperBase {
   public void fillUserForm(UserData userData, boolean creation) {
     type(By.name("firstname"), userData.getFirstname());
     type(By.name("lastname"), userData.getLastname());
+    attach(By.name("photo"), userData.getPhoto());
     type(By.name("address"), userData.getAddress());
     type(By.name("home"), userData.getHomePhone());
     type(By.name("email"), userData.getEmail());
