@@ -14,5 +14,13 @@
     "homePhone": "+79319680001",
     "email": "olala@ola.ru1",
     "group": "test1"
+  },
+  {
+    "firstname": "test 2",
+    "lastname": "testov 2",
+    "address": "spb, lenina 2",
+    "homePhone": "+79319680002",
+    "email": "olala@ola.ru2",
+    "group": "test1"
   }
 ]
