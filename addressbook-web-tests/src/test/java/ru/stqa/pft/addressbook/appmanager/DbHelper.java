@@ -7,6 +7,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.addressbook.model.UserData;
+import ru.stqa.pft.addressbook.model.Users;
 
 import java.util.List;
 
@@ -30,5 +32,14 @@ public class DbHelper {
     session.getTransaction().commit();
     session.close();
     return new Groups(result);
+  }
+
+  public Users users() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<UserData> result = session.createQuery("from UserData where deprecated='0000-00-00'").list();
+    session.getTransaction().commit();
+    session.close();
+    return new Users(result);
   }
 }

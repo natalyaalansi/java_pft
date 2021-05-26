@@ -1,24 +1,24 @@
 [
   {
-    "firstname": "test 0",
-    "lastname": "testov 0",
-    "address": "spb, lenina 0",
+    "firstname": "test0",
+    "lastname": "testov0",
+    "address": "spb lenina0",
     "homePhone": "+79319680000",
     "email": "olala@ola.ru0",
     "group": "test1"
   },
   {
-    "firstname": "test 1",
-    "lastname": "testov 1",
-    "address": "spb, lenina 1",
+    "firstname": "test1",
+    "lastname": "testov1",
+    "address": "spb lenina1",
     "homePhone": "+79319680001",
     "email": "olala@ola.ru1",
     "group": "test1"
   },
   {
-    "firstname": "test 2",
-    "lastname": "testov 2",
-    "address": "spb, lenina 2",
+    "firstname": "test2",
+    "lastname": "testov2",
+    "address": "spb lenina2",
     "homePhone": "+79319680002",
     "email": "olala@ola.ru2",
     "group": "test1"

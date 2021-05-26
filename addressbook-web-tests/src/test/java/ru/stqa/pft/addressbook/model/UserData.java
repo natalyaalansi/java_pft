@@ -202,7 +202,10 @@ public class UserData {
 
     if (id != userData.id) return false;
     if (firstname != null ? !firstname.equals(userData.firstname) : userData.firstname != null) return false;
-    return lastname != null ? lastname.equals(userData.lastname) : userData.lastname == null;
+    if (lastname != null ? !lastname.equals(userData.lastname) : userData.lastname != null) return false;
+    if (address != null ? !address.equals(userData.address) : userData.address != null) return false;
+    if (homePhone != null ? !homePhone.equals(userData.homePhone) : userData.homePhone != null) return false;
+    return email != null ? email.equals(userData.email) : userData.email == null;
   }
 
   @Override
@@ -210,6 +213,9 @@ public class UserData {
     int result = id;
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
+    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
     return result;
   }
 }

@@ -54,8 +54,8 @@ public class UserDataGenerator {
   private List<UserData> generateUsers(int count) {
     List<UserData> users = new ArrayList<UserData>();
     for (int i = 0; i < count; i++) {
-      users.add(new UserData().withFirstname(String.format("test %s", i)).withLastname(String.format("testov %s", i))
-              .withAddress(String.format("spb, lenina %s", i)).withHomePhone(String.format("+7931968000%s", i))
+      users.add(new UserData().withFirstname(String.format("test%s", i)).withLastname(String.format("testov%s", i))
+              .withAddress(String.format("spb lenina%s", i)).withHomePhone(String.format("+7931968000%s", i))
               .withEmail(String.format("olala@ola.ru%s", i)).withGroup(String.format("test1")));
     }
     return users;
