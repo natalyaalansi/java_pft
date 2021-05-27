@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.UserData;
 import ru.stqa.pft.addressbook.model.Users;
 
@@ -22,10 +23,11 @@ public class UserCreationTests extends TestBase {
 
   @Test(dataProvider = "validUsersFromJson")
   public void testUserCreation(UserData user) {
+    Groups groups = app.db().groups();
     app.goTo().homePage();
     Users before = app.db().users();
     app.goTo().userPage();
-    app.user().create(user, true);
+    app.user().create(user.inGroup(groups.iterator().next()), true);
     assertThat(app.user().count(), equalTo(before.size() + 1));
     Users after = app.db().users();
     assertThat(after, equalTo(
