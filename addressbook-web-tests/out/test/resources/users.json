@@ -3,7 +3,7 @@
     "firstname": "test0",
     "lastname": "testov0",
     "address": "spb lenina0",
-    "homePhone": "+79319680000",
+    "homePhone": "79319680000",
     "email": "olala@ola.ru0",
     "group": "test1"
   },
@@ -11,7 +11,7 @@
     "firstname": "test1",
     "lastname": "testov1",
     "address": "spb lenina1",
-    "homePhone": "+79319680001",
+    "homePhone": "79319680001",
     "email": "olala@ola.ru1",
     "group": "test1"
   },
@@ -19,7 +19,7 @@
     "firstname": "test2",
     "lastname": "testov2",
     "address": "spb lenina2",
-    "homePhone": "+79319680002",
+    "homePhone": "79319680002",
     "email": "olala@ola.ru2",
     "group": "test1"
   }

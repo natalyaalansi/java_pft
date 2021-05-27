@@ -104,7 +104,7 @@ public class UserHelper extends HelperBase {
       String allPhones = cells.get(5).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       userCache.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname)
-              .withAddress(address).withAllEmails(allEmails).withAllPhones(allPhones));
+              .withAddress(address).withEmail(allEmails).withHomePhone(allPhones));
     }
     return new Users(userCache);
   }
