@@ -42,4 +42,32 @@ public class DbHelper {
     session.close();
     return new Users(result);
   }
+
+  public Users usersWithoutGroup() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<UserData> result = session.createQuery("from UserData where deprecated='0000-00-00' and groups.size = 0").list();
+    session.getTransaction().commit();
+    session.close();
+    return new Users(result);
+  }
+
+  public UserData userById(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<UserData> result = session.createQuery(String.format("from UserData where id = %s", id)).list();
+    session.getTransaction().commit();
+    session.close();
+    return result.iterator().next();
+  }
+
+  public Users usersInGroup() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<UserData> result
+            = session.createQuery("from UserData where deprecated = '0000-00-00' and groups.size > 0").list();
+    session.getTransaction().commit();
+    session.close();
+    return new Users(result);
+  }
 }

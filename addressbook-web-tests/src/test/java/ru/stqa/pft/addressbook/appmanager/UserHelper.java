@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.UserData;
 import ru.stqa.pft.addressbook.model.Users;
 
@@ -33,8 +34,8 @@ public class UserHelper extends HelperBase {
     type(By.name("email"), userData.getEmail());
 
     if (creation) {
-      if(userData.getGroups().size() > 0){
-        Assert.assertTrue(userData.getGroups().size()==1);
+      if (userData.getGroups().size() > 0) {
+        Assert.assertTrue(userData.getGroups().size() == 1);
         new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroups().iterator().next().getName());
       }
 
@@ -84,6 +85,41 @@ public class UserHelper extends HelperBase {
     selectUserById(user.getId());
     deleteSelectedUsers();
     userCache = null;
+  }
+
+  public void addUserToGroup(UserData user, GroupData group) {
+    selectUserWithoutGroup(user);
+    selectGroupFromList(group);
+    addToGroup();
+  }
+
+  public void selectUserWithoutGroup(UserData user) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText("[none]");
+    click(By.xpath(String.format("//input[@type='checkbox']", user.getId())));
+  }
+
+  public void selectGroupFromList(GroupData group) {
+    wd.findElement(By.name("to_group")).click();
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+  }
+
+  public void addToGroup() {
+    click(By.name("add"));
+  }
+
+  public void deleteUserFromGroup(UserData user, GroupData group) {
+    sortUsersByGroup(group);
+    selectUserById(user.getId());
+    removeFromGroup();
+  }
+
+  public void removeFromGroup() {
+    click(By.name("remove"));
+  }
+
+  public void sortUsersByGroup(GroupData group) {
+    wd.findElement(By.name("group")).click();
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
   }
 
   public int count() {
