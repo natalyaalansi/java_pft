@@ -16,3 +16,5 @@ gradle-app.setting
 .idea/misc.xml
 *.class
 *.log
+mantis-tests/out/test/resources/config_inc.php
+mantis-tests/out/test/resources/local.properties
