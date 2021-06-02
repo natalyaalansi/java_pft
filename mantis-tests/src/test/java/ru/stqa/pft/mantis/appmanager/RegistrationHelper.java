@@ -15,9 +15,9 @@ public class RegistrationHelper extends HelperBase {
     click(By.xpath("//form[@id='signup-form']/fieldset/input[2]"));
   }
 
-  public void finish(String confirmationLink, String password, String user) {
+  public void finish(String confirmationLink, String password, String username) {
     wd.get(confirmationLink);
-    type(By.id("realname"), user);
+    type(By.id("realname"), username);
     type(By.name("password"), password);
     type(By.name("password_confirm"), password);
     click(By.xpath("//button[@type='submit']"));
